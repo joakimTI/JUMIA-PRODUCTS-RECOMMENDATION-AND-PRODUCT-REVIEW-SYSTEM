@@ -12,6 +12,9 @@ display_recommendations = dill.load(open("display_recommendations.pkl", "rb"))
 # Load your data
 df3 = dill.load(open("products_list.pkl", "rb"))
 
+categories = df3['Category'].unique()
+
+
 # Build a recommendation Function
 def recommend_items(product_name, num_recommendations=5):
     # Combine the features
@@ -47,34 +50,63 @@ def recommend_items(product_name, num_recommendations=5):
     
     return top_recommendations
 
-def display_recommendations(product_name, data, num_recommendations=5):
+def display_recommendations(product_name, data, num_recommendations=5, items_per_page=3):
     # Get the list of recommended items
     recommendations = recommend_items(product_name, num_recommendations)
     
-    # Display the original product for context
-    st.write(f"### Recommendations for '{product_name}':\n")
+    # Initialize carousel page in session state
+    if 'carousel_page' not in st.session_state:
+        st.session_state['carousel_page'] = 0
 
-    # Loop through the recommendations and display details from the dataset
-    for rec in recommendations:
-        # Filter the dataset to get details of the recommended item
+    # Calculate the total number of pages
+    total_pages = (len(recommendations) + items_per_page - 1) // items_per_page
+    
+    # Display title for recommendations
+    st.write(f"### Recommendations for '{product_name}':\n")
+    
+    # Display items for the current page
+    start_index = st.session_state['carousel_page'] * items_per_page
+    end_index = start_index + items_per_page
+    current_page_recommendations = recommendations[start_index:end_index]
+    
+    # Display items in a row using columns
+    cols = st.columns(items_per_page)
+    for idx, rec in enumerate(current_page_recommendations):
         rec_data = data[data['product_name'] == rec]
         
         if not rec_data.empty:
-            st.write(f"**Product Name:** {rec_data['product_name'].values[0]}")
-            st.write(f"**Category:** {rec_data['Category'].values[0]}")
-            st.write(f"**Ratings:** {rec_data['overall_ratings'].values[0]}")
-            st.write(f"**Price:** ${rec_data['price'].values[0]:,.2f}")
-            st.write("—" * 10)
+            # Display each item in its respective column
+            with cols[idx]:
+                st.image(rec_data['image'].values[0], width=150)
+                st.write(f"**Name:** {rec_data['product_name'].values[0]}")
+                st.write(f"**Category:** {rec_data['Category'].values[0]}")
+                st.write(f"**Ratings:** {rec_data['overall_ratings'].values[0]}")
+                st.write(f"**Price:** Ksh{rec_data['price'].values[0]:,.2f}")
+                st.write("—" * 10)
         else:
             st.write(f"Details for '{rec}' not found in dataset.")
+    
+    # Carousel navigation buttons
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        if st.button("Previous", key="prev"):
+            st.session_state['carousel_page'] = (st.session_state['carousel_page'] - 1) % total_pages
+    with col3:
+        if st.button("Next", key="next"):
+            st.session_state['carousel_page'] = (st.session_state['carousel_page'] + 1) % total_pages
+
 
 # Streamlit app logic
 st.title("Product Recommendations")
 
-# Get product name input from the user
+# Select category from dropdown
+category_name = st.selectbox("Select Category from dropdown", df3['Category'].unique())
 
-product_name = st.selectbox("Select movie from dropdown", df3['product_name'])
+# Filter products based on selected category
+filtered_products = df3[df3['Category'] == category_name]['product_name']
 
+# Select product from the filtered list
+product_name = st.selectbox("Select product from dropdown", filtered_products)
 if product_name:
     st.write(f"Recommendations for '{product_name}':")
     
