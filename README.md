@@ -1,4 +1,7 @@
-****JUMIA-PRODUCTS-RECOMMENDATION-AND-PRODUCT-REVIEW-SYSTEM****
+**JUMIA-PRODUCTS-RECOMMENDATION-AND-PRODUCT-REVIEW-SYSTEM**
+
+****************************************************************************************************************![download 3](https://github.com/user-attachments/assets/9d55becf-06b2-49de-b100-af748ba00a2f)******
+
 
 **Overview**
 
