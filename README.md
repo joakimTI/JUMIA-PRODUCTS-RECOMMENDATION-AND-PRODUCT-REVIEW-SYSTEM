@@ -1,8 +1,8 @@
-**JUMIA-PRODUCTS-RECOMMENDATION-AND-PRODUCT-REVIEW-SYSTEM**
+**PRODUCTS-RECOMMENDATION-AND-PRODUCT-REVIEW-SYSTEM**
 
-****************************************************************************************************************
+****
 
-![download 3](https://github.com/user-attachments/assets/9d55becf-06b2-49de-b100-af748ba00a2f)
+![alt text](image.png)
 
 
 **Overview**
@@ -37,7 +37,7 @@ Contribute to developing the e-commerce sector in Kenya by addressing key pain p
  
 **Data**
 
-The data was scraped from the Jumia website (https://www.jumia.co.ke/) and can be accessed (input github link). The dataset contains 11615 rows and 20 columns.  The Jumia policy for data collection limited the data scraping.
+The data was scraped from the [Jumia](https://www.jumia.co.ke/) website and can be accessed (input github link). The dataset contains 11615 rows and 20 columns.  The Jumia policy for data collection limited the data scraping.
 
 **Data Preparation**
 
