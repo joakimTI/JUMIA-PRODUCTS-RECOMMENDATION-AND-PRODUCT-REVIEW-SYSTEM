@@ -2,7 +2,7 @@
 
 ****************************************************************************************************************
 
-![download 3](https://github.com/user-attachments/assets/9d55becf-06b2-49de-b100-af748ba00a2f)******
+![download 3](https://github.com/user-attachments/assets/9d55becf-06b2-49de-b100-af748ba00a2f)
 
 
 **Overview**
@@ -51,11 +51,23 @@ Review titles and review columns are cleaned using natural language processing.
 Wordclouds for the sentiment categories have been shown, For the positive sentiment, 'good', 'nice', and 'love', words appeared more often in the positive reviews. i Interesting that the word 'product' appeared often too!
 
 **Modelling**
-After training the dataset, BOW SVM, TFIDF,Naive Bayes,Random Forest were tested. Random Forest performed best, with an accuracy level of 87% compared to BOW SVM, TFIDF,Naive Bayes which had 82%, 85%, 81%, 83% accuracies respectively. 
+After training the dataset, BOW SVM, TFIDF, Naive Bayes, andom Forest were tested. Random Forest performed best, with an accuracy level of 87% compared to BOW SVM, TFIDF,Naive Bayes which had 82%, 85%, 81%, 83% accuracies respectively. 
 
 **Recommendation system**
+Unpersonalised recommendation:  products  and categories with the highest weighted ratings were successfully recommended. 
+Item-based Recommendation: products that were similar to what the customer purchased were successfully  recommended. 
+Content-based filtering: Based on metadata, Items  that had been previously liked were successfully  recommended. 
+
+**Limitations**
+1. Data scraping- the scarping site restricted scarping to 10 reviews prt product
+2. Lack of unique identifiers.
+
+**Conclusion**
+
+This project successfully developed and evaluated a dual-purposed system integrating product recommendation and sentiment analysis to address key challenges in Kenya's e-commerce landscape. It focus on user interaction, It provides actionable insights that enhance user satisfaction and retailer efficiency.
 
 **Collaborators**
+
 [Joakim Tipape](https://github.com/joakimTI)
 
 [Brian Ouko](https://github.com/WellBrian)
