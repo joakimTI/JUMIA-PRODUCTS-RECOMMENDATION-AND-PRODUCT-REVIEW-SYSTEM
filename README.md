@@ -62,6 +62,10 @@ Content-based filtering: Based on metadata, Items  that had been previously like
 1. Data scraping- the scarping site restricted scarping to 10 reviews prt product
 2. Lack of unique identifiers.
 
+**Deployment**
+
+[TrendSense](https://trendsense.vercel.app/)
+
 **Conclusion**
 
 This project successfully developed and evaluated a dual-purposed system integrating product recommendation and sentiment analysis to address key challenges in Kenya's e-commerce landscape. It focus on user interaction, It provides actionable insights that enhance user satisfaction and retailer efficiency.
