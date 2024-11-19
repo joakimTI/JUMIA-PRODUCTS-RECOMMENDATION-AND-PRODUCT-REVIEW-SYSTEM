@@ -87,6 +87,33 @@ Content-based filtering: Based on metadata, Items  that had been previously like
 **Deployment**
 Deployed on Vercel for ease of access, with FastAPI to serve as the backend
 
+**FastAPI Endpoints**
+
+*Root Endpoint* 
+
+`GET /`
+Returns top-rated products grouped by category.
+Product Details
+
+`GET /products/{product_id}`
+Fetches detailed information about a product.
+
+**Recommendations**
+
+`GET /recommendations/{product_id}`
+
+Provides a list of similar products.
+
+**Query Parameters**:
+
+num_recommendations (optional): Number of recommendations (default: 5).
+
+**Reviews by Sentiment**
+
+`GET /reviews/{product_id}`
+
+Groups reviews of a product by sentiment.
+
 [TrendSense](https://trendsense.vercel.app/)
 
 ****
